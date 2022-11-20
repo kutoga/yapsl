@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "yapsl"
+version = "0.1.3"
+description = ""
+authors = ["Benjamin Bruno Meier <benjamin.meier70@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/kutoga/yapsl"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+alog = "^1.2.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
