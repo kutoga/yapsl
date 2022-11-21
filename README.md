@@ -1,10 +1,7 @@
 # yapsl
 
 yapsl (Yet Another Python Sms Library) allows to send SMS from python by using a local connected modem (e.g. Huawei E220).
-The library is at the moment in a beta-state and does not yet implement everything. E.g. the message delivery confirmation
-is not yet implemented.
-
-Also it's required that the PIN is already entered (or that no PIN is used at all). If that's not the case, the library
+It's required that the PIN is already entered (or that no PIN is used at all). If that's not the case, the library
 will raise an exception.
 
 ## Usage
@@ -42,6 +39,5 @@ gw.send('0786391538', 'this is NOT a test message', type=SmsType.REPLACE_TYPE_1)
 
 ## TODO
 
-- [ ] Check the specs what should happen if a flash-SMS is combined with other SMS
 - [ ] Allow it to get the 'sms-received-confirmations' in python
-- [ ] Improve the API
+
