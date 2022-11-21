@@ -51,7 +51,7 @@ class SmsGateway:
         res_prefix = '+CREG: '
         if not res.startswith(res_prefix):
             raise Exception('Expected a line with the prefix "{res_prefix}", but got this line: {res}')
-        n, stat = res[len(res_prefix):].split(',')
+        n, stat, *_ = res[len(res_prefix):].split(',')
         n = int(n)
         stat = int(stat)
         registered_home_nw = 1
