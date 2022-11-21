@@ -30,10 +30,12 @@ gw.send('0786391538', 'this is a test message', flash=True)
 gw.send('0786391538', 'this is a test message', type=SmsType.TYPE_0)
 
 # send a replaceable SMS (note there exist only 7 of these replaceable SMS)
-gw.send('0786391538', 'this is a test message', type=SmsType.REPLACE_TYPE_1)
+gw.send('0786391538', '3...', type=SmsType.REPLACE_TYPE_1)
 
-# replace the previous sent SMS
-gw.send('0786391538', 'this is NOT a test message', type=SmsType.REPLACE_TYPE_1)
+# replace the previous sent SMS (a few times)
+gw.send('0786391538', '2...', type=SmsType.REPLACE_TYPE_1)
+gw.send('0786391538', '1...', type=SmsType.REPLACE_TYPE_1)
+gw.send('0786391538', 'Hey:D', type=SmsType.REPLACE_TYPE_1)
 
 ```
 
