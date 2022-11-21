@@ -4,6 +4,12 @@ yapsl (Yet Another Python Sms Library) allows to send SMS from python by using a
 It's required that the PIN is already entered (or that no PIN is used at all). If that's not the case, the library
 will raise an exception.
 
+## Installation
+
+```python
+pip install yapsl
+```
+
 ## Usage
 
 ```python
