@@ -7,6 +7,7 @@ from enum import Enum
 from .encoding import gsm_encode
 
 class SmsType(Enum):
+    # see: https://en.wikipedia.org/wiki/GSM_03.40#Protocol_Identifier
     DEFAULT = 0
     TYPE_0 = 64
     REPLACE_TYPE_1 = 65
@@ -79,22 +80,18 @@ class SmsGateway:
             raise Exception("A PIN is required! Note that this library does not support PIn authentication, so you have to do this before the library is used.")
         if not self.is_connected():
             raise Exception("Network connection is missing")
-        # alog.info(f'receiver="{receiver}" text="{text}" type="{type}"')
-        # More details are here: https://blog.compass-security.com/2018/10/substitutable-message-service/
+        # more details are here: https://blog.compass-security.com/2018/10/substitutable-message-service/
         pdu_msg = ''.join([
             '00', # SMS service center nr is not included
             '21' if delivery_report else '01',
             '00', # reference nr: 00 means auto selection
             self._pdu_encode_phone_nr(receiver),
             f'{type.value:02X}',
-            '10' if flash else '00', # 7 bit GSM encoding
+            '10' if flash else '00', # use 7 bit GSM encoding (plus set flash-sms bit)
             f'{len(text):02X}', # length of message
-            gsm_encode(text), #'0CC8329BFD065DDF72363904'
-            # binascii.hexlify(text.encode('utf8')).decode('utf8')
+            gsm_encode(text)
         ])
         self._send_pdu_cmd(pdu_msg)
-        # while True:
-        # self._read_line()
 
     def _pdu_encode_phone_nr(self, nr):
         is_international = nr.startswith('+')
@@ -162,3 +159,4 @@ class SmsGateway:
         if strip:
             data = data.strip()
         return data
+

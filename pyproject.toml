@@ -7,7 +7,7 @@ readme = "README.md"
 homepage = "https://github.com/kutoga/yapsl"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.6"
 alog = "^1.2.0"
 
 [tool.poetry.dev-dependencies]
